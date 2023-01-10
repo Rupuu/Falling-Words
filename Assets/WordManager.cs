@@ -32,7 +32,10 @@ public class WordManager : MonoBehaviour
         //on backspace
         if (input == '\b')
         {
-            currentInputWord.Length--;
+            if(currentInputWord.Length > 0){
+                currentInputWord.Length--;
+                Debug.Log(currentInputWord.ToString());
+            }
         }
         //on enter
         else if (input == '\r')

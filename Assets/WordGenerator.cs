@@ -9,7 +9,7 @@ public class WordGenerator : MonoBehaviour
 {
     private static Dictionary<string,string[]> wordDict = new Dictionary<string, string[]>();
     public static void FillDict(){
-        wordDict.Add("parent", new string[]{"родител","настоиник"});
+        wordDict.Add("parent", new string[]{"родител","настойник"});
         wordDict.Add("еxpert", new string[]{"експерт","професионалист"});
         wordDict.Add("walk", new string[]{"разходка","ходене", "вървене"});
         wordDict.Add("morning", new string[]{"сутрин","утро"});
