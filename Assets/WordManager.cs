@@ -9,6 +9,7 @@ public class WordManager : MonoBehaviour
     private bool hasActiveWord;
     private Word activeWord;
     private StringBuilder currentInputWord;
+    public WordSpawner wordSpawner;
     private void Start()
     {
         currentInputWord = new StringBuilder();
@@ -21,9 +22,10 @@ public class WordManager : MonoBehaviour
 
     public void AddWord()
     {
-        Word word = WordGenerator.GetRandomWord();
-        Debug.Log(word.word);
+        var wordData = WordGenerator.GetRandomWordData();
+        Word word = new Word(wordData.Key,wordData.Value, wordSpawner.SpawnWord());
 
+        Debug.Log(word.word);
         words.Add(word);
     }
 
@@ -49,7 +51,9 @@ public class WordManager : MonoBehaviour
                     {
                         Debug.Log("Correct!!");
                         foundAnswer = true;
-                        words.Remove(word);
+                        //uncomment to delete the word from list
+                            // words.Remove(word);
+                        word.display.RemoveWord();
                         break;
                     }
                 }

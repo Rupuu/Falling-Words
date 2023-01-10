@@ -18,11 +18,11 @@ public class WordGenerator : MonoBehaviour
         wordDict.Add("precious", new string[]{"скъпоценен","ценен", "скъп"});
         wordDict.Add("place", new string[]{"място","площад", "селище"});
     }
-    public static Word GetRandomWord()
+    public static KeyValuePair<string,string[]> GetRandomWordData()
     {
-        var randomWord = wordDict.ElementAt(Random.Range(0,wordDict.Count));
-        wordDict.Remove(randomWord.Key);
+        var randomWordData = wordDict.ElementAt(Random.Range(0,wordDict.Count));
+        wordDict.Remove(randomWordData.Key);
 
-        return new Word(randomWord.Key,randomWord.Value);
+        return randomWordData;
     }
 }
