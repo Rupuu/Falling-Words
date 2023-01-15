@@ -15,17 +15,13 @@ public class WordManager : MonoBehaviour
         currentInputWord = new StringBuilder();
         //detele later:
         WordGenerator.FillDict(); // hard coded to fill up dummy database.
-        AddWord();
-        AddWord();
-        AddWord();
     }
 
     public void AddWord()
     {
         var wordData = WordGenerator.GetRandomWordData();
         Word word = new Word(wordData.Key,wordData.Value, wordSpawner.SpawnWord());
-
-        Debug.Log(word.word);
+        
         words.Add(word);
     }
 
