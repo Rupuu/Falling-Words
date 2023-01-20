@@ -6,8 +6,6 @@ using UnityEngine;
 public class WordManager : MonoBehaviour
 {
     public List<Word> words;
-    private bool hasActiveWord;
-    private Word activeWord;
     private StringBuilder currentInputWord;
     public WordSpawner wordSpawner;
     private void Start()
@@ -20,6 +18,11 @@ public class WordManager : MonoBehaviour
     public void AddWord()
     {
         var wordData = WordGenerator.GetRandomWordData();
+        if(wordData.Key == "!#@#$"){
+            // if the statement is true, there are no more words in the dict
+            // possible logic for end here
+            return;
+        }
         Word word = new Word(wordData.Key,wordData.Value, wordSpawner.SpawnWord());
         
         words.Add(word);
@@ -57,6 +60,9 @@ public class WordManager : MonoBehaviour
                 {
                     break;
                 }
+            }
+            if(!foundAnswer){
+                Debug.Log("Wrong!");
             }
             currentInputWord.Clear();
         }

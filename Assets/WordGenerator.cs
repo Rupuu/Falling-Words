@@ -16,7 +16,7 @@ public class WordGenerator : MonoBehaviour
         wordDict.Add("morning", new string[] { "сутрин", "утро" });
         wordDict.Add("imagination", new string[] { "въображение", "фантазия" });
         wordDict.Add("story", new string[] { "история", "разказ" });
-        wordDict.Add("precious", new string[] { "скъпо", "ценно","скъп", "скъпиценнен"});
+        wordDict.Add("precious", new string[] { "скъпо", "ценно","скъп", "скъпoценнен"});
         wordDict.Add("place", new string[] { "място", "площад", "селище" });
         wordDict.Add("doctor", new string[] { "доктор", "лекар" });
         wordDict.Add("bubble", new string[] { "балон", "мехур" });
@@ -34,9 +34,11 @@ public class WordGenerator : MonoBehaviour
     }
     public static KeyValuePair<string, string[]> GetRandomWordData()
     {
+        if(wordDict.Count == 0){
+            return new KeyValuePair<string, string[]>("!#@#$",new string[]{string.Empty});
+        }
         var randomWordData = wordDict.ElementAt(Random.Range(0, wordDict.Count));
         wordDict.Remove(randomWordData.Key);
-
         return randomWordData;
     }
 }
