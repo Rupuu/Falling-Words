@@ -9,7 +9,6 @@ public class WordSpawner : MonoBehaviour
     public WordDisplay SpawnWord()
     {
         //see new wave spawner methods
-        //!!! currently words collide with each other
         Vector3 randomPosition = new Vector3(Random.Range(-2.5f, 2.5f), 5f);
         GameObject wordObj = Instantiate(wordPrefab, randomPosition, Quaternion.identity, wordCanvas);
         WordDisplay wordDisplay = wordObj.GetComponent<WordDisplay>();
