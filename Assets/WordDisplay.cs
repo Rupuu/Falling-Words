@@ -6,7 +6,7 @@ using UnityEngine;
 public class WordDisplay : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    private float fallSpeed = 2f; //inital speed 0.5f
+    private float fallSpeed = 0.5f; //inital speed 0.5f
 
     //sets the word to text component
     public void SetWord(string word){
@@ -19,7 +19,7 @@ public class WordDisplay : MonoBehaviour
         //add an animation, sprites atc here
         text.color = Color.red;
         
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject, 0.2f);
     }
 
     // moves the text component in a specific direction every frame
