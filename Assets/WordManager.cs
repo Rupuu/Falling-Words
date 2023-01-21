@@ -1,24 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using TMPro;
 using UnityEngine;
 
 public class WordManager : MonoBehaviour
 {
     public List<Word> words;
     private StringBuilder currentInputWord;
-    public TextMeshProUGUI inputField; 
     public WordSpawner wordSpawner;
+    public InputFieldDisplay inputDisplay;
     private void Start()
     {
         currentInputWord = new StringBuilder();
         //detele later:
         WordGenerator.FillDict(); // hard coded to fill up dummy database.
-    }
-
-    private void Update() {
-        inputField.text = currentInputWord.ToString();
     }
 
     public void AddWord()
@@ -43,43 +38,37 @@ public class WordManager : MonoBehaviour
             if (currentInputWord.Length > 0)
             {
                 currentInputWord.Length--;
-                Debug.Log(currentInputWord.ToString());
+                inputDisplay.InputFieldTextUpdate(currentInputWord.ToString());
             }
         }
         //on enter
         else if (input == '\r')
         {
-            bool foundAnswer = false;
-            foreach (Word word in words)
-            {
-                foreach (string answer in word.asnwers)
-                {
-                    if (currentInputWord.ToString() == answer)
-                    {
-                        Debug.Log("Correct!!");
-                        foundAnswer = true;
-                        //uncomment to delete the word from list
-                        // words.Remove(word);
-                        word.display.RemoveWord();
-                        break;
-                    }
-                }
-                if (foundAnswer)
-                {
-                    break;
-                }
-            }
-            if (!foundAnswer)
-            {
-                Debug.Log("Wrong!");
-            }
+            bool result = checkCorrectAnswerAndRemove();
+
+            inputDisplay.ChangeInputAnswerColorAndReset(result);
             currentInputWord.Clear();
         }
         else
         {
             currentInputWord.Append(input);
-            Debug.Log(currentInputWord.ToString());
+            inputDisplay.InputFieldTextUpdate(currentInputWord.ToString());
         }
+    }
+    public bool checkCorrectAnswerAndRemove()
+    {
+        foreach (Word word in words)
+        {
+            foreach (string answer in word.asnwers)
+            {
+                if (currentInputWord.ToString() == answer)
+                {
+                    word.display.RemoveWord();
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
 

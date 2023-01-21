@@ -17,7 +17,7 @@ public class WordDisplay : MonoBehaviour
     //destroys the text component that the word is related to
     public void RemoveWord(){
         //add an animation, sprites atc here
-        text.color = Color.red;
+        text.color = Color.green;
         
         Destroy(gameObject, 0.2f);
     }
