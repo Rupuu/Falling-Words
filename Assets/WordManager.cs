@@ -12,8 +12,8 @@ public class WordManager : MonoBehaviour
     private void Start()
     {
         currentInputWord = new StringBuilder();
-        //detele later:
-        WordGenerator.FillDict(); // hard coded to fill up dummy database.
+
+        WordGenerator.SetDatabase();
     }
 
     public void AddWord()
@@ -38,21 +38,22 @@ public class WordManager : MonoBehaviour
             if (currentInputWord.Length > 0)
             {
                 currentInputWord.Length--;
-                inputDisplay.InputFieldTextUpdate(currentInputWord.ToString());
+                inputDisplay.SetInputText(currentInputWord.ToString());
             }
         }
         //on enter
         else if (input == '\r')
         {
             bool result = checkCorrectAnswerAndRemove();
+            inputDisplay.ChangeInputAnswerColor(result);
 
-            inputDisplay.ChangeInputAnswerColorAndReset(result);
+            inputDisplay.ResetAfterDelay();
             currentInputWord.Clear();
         }
         else
         {
             currentInputWord.Append(input);
-            inputDisplay.InputFieldTextUpdate(currentInputWord.ToString());
+            inputDisplay.SetInputText(currentInputWord.ToString());
         }
     }
     public bool checkCorrectAnswerAndRemove()

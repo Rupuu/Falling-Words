@@ -7,11 +7,11 @@ public class InputFieldDisplay : MonoBehaviour
 {
     public TextMeshProUGUI inputField;
 
-    public void InputFieldTextUpdate(string text)
+    public void SetInputText(string text)
     {
         inputField.text = text;
     }
-    public void ChangeInputAnswerColorAndReset(bool result)
+    public void ChangeInputAnswerColor(bool result)
     {
         if (result)
         {
@@ -21,11 +21,16 @@ public class InputFieldDisplay : MonoBehaviour
         {
             inputField.color = Color.red;
         }
-        Invoke("ResetInput",0.2f);
     }
+    
+    public void ResetAfterDelay(){
+        Invoke(nameof(ResetInput), 0.2f);
+    }
+
     private void ResetInput()
     {
         inputField.color = Color.white;
         inputField.text = string.Empty;
     }
+
 }
