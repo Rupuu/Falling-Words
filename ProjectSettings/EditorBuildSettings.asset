@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Menu.unity
+    guid: 72d455b7c58b07c48929d5d8ecfdc1ea
+  - enabled: 1
+    path: Assets/Scenes/FallingWordsGame.unity
+    guid: 3565c09955f72c94bb68102cdb696b91
   m_configObjects: {}
