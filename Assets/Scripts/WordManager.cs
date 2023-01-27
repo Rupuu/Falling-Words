@@ -65,6 +65,7 @@ public class WordManager : MonoBehaviour
                 if (currentInputWord.ToString() == answer)
                 {
                     word.display.RemoveWord();
+                    words.Remove(word);
                     return true;
                 }
             }
