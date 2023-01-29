@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-// here it can be used a database from which the words can be extracted
+// here is used a database from which the words are being extracted
 public class WordGenerator : MonoBehaviour
 {
     private static Dictionary<string, string[]> wordDict = new Dictionary<string, string[]>();
@@ -18,7 +18,7 @@ public class WordGenerator : MonoBehaviour
 
         foreach (var data in fileData)
         {
-            string[] wordData = data.Split(':');
+            string[] wordData = data.Split('-');
 
             wordDict.Add(wordData[0],wordData[1].Split(","));
         }
