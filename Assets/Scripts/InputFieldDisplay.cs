@@ -24,7 +24,7 @@ public class InputFieldDisplay : MonoBehaviour
     }
     
     public void ResetAfterDelay(){
-        Invoke(nameof(ResetInput), 0.2f);
+        Invoke(nameof(ResetInput), 0.1f);
     }
 
     private void ResetInput()
