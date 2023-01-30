@@ -6,13 +6,14 @@ using UnityEngine;
 public class WordDisplay : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    private float fallSpeed = 0.5f; //inital speed 0.5f
+    private float fallSpeed;
 
     //sets the word to text component
     public void SetWord(string word)
     {
         text.text = word;
         gameObject.name = word;
+        fallSpeed = OptionsMenu.fallSpeed;
     }
 
     //stop the movement & destroys the text component that the word is related to

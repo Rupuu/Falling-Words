@@ -8,7 +8,7 @@ using UnityEngine;
 public class WordGenerator : MonoBehaviour
 {
     private static Dictionary<string, string[]> wordDict = new Dictionary<string, string[]>();
-    public static string chosenLang = "CustomLevel";
+    public static string chosenLang = "English-A1";
     private static string filePath;
 
     public static void SetDatabase()
