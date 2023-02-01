@@ -7769,7 +7769,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1643995252}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: SetValue
+        m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
