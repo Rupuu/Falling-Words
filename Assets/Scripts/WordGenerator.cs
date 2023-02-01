@@ -7,7 +7,7 @@ using UnityEngine;
 // here is used a database from which the words are being extracted
 public class WordGenerator : MonoBehaviour
 {
-    private static Dictionary<string, string[]> wordDict = new Dictionary<string, string[]>();
+    public static Dictionary<string, string[]> wordDict = new Dictionary<string, string[]>();
     public static string chosenLang = "English-A1";
     private static string filePath;
 
