@@ -10,6 +10,7 @@ public class WordGenerator : MonoBehaviour
     public static Dictionary<string, string[]> wordDict = new Dictionary<string, string[]>();
     public static string chosenLang = "English-A1";
     private static string filePath;
+    public static int allWordsCount;
 
     public static void SetDatabase()
     {
@@ -22,6 +23,7 @@ public class WordGenerator : MonoBehaviour
 
             wordDict.Add(wordData[0],wordData[1].Split(','));
         }
+        allWordsCount = wordDict.Count;
     }
     public static KeyValuePair<string, string[]> GetRandomWordData()
     {

@@ -8,6 +8,8 @@ public class WordManager : MonoBehaviour
     public List<Word> words;
     private StringBuilder currentInputWord;
     public WordSpawner wordSpawner;
+    public WordScorer wordScorer;
+    public FinishController controller;
     public InputFieldDisplay inputDisplay;
     private void Start()
     {
@@ -21,8 +23,10 @@ public class WordManager : MonoBehaviour
         var wordData = WordGenerator.GetRandomWordData();
         if (wordData.Key == "!#@#$")
         {
-            // if the statement is true, there are no more words in the dict
-            // possible logic for end here
+            if (wordScorer.OverallCountOfWords() == WordGenerator.allWordsCount)
+            {
+                controller.FinishGame();
+            }
             return;
         }
         Word word = new Word(wordData.Key, wordData.Value, wordSpawner.SpawnWord());
@@ -65,6 +69,7 @@ public class WordManager : MonoBehaviour
                 if (currentInputWord.ToString() == answer)
                 {
                     word.display.RemoveWord();
+                    wordScorer.correctWords.Add(word);
                     words.Remove(word);
                     return true;
                 }

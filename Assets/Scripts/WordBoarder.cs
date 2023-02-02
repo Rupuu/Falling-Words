@@ -7,14 +7,14 @@ using UnityEngine;
 public class WordBoarder : MonoBehaviour
 {
     public WordManager wordManager;
-    public List<string> untypedWords;
+    public WordScorer wordScorer;
 
     // logic for when the words fall out of screen
     void OnCollisionEnter2D(Collision2D collidedWord)
     {
-        untypedWords.Add(collidedWord.gameObject.name);
-
         Word matchedWord = wordManager.words.Find(x => x.word == collidedWord.gameObject.name);
+        
+        wordScorer.untypedWords.Add(matchedWord);
         wordManager.words.Remove(matchedWord);
 
         Destroy(collidedWord.gameObject);
