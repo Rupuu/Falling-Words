@@ -72,7 +72,8 @@ public class OptionsMenu : MonoBehaviour
         if (!EvaluateWordInput(wordsInputData))
         {
             resultBox.color = Color.red;
-            resultBox.text = "Inputted words have invalid syntax";
+            resultBox.text = "Inputted words have invalid syntax" + '\n' +
+            "Make sure words are not repeating, and there is atleast one translation.";
             return;
         }
         Directory.CreateDirectory(filePath);
@@ -92,14 +93,23 @@ public class OptionsMenu : MonoBehaviour
     }
     private bool EvaluateWordInput(string[] wordsInput)
     {
+        HashSet<string> uniqueWords = new HashSet<string>();
+
         foreach (var word in wordsInput)
         {
-            string[] wordAndAnswer = word.Trim().Split('-',StringSplitOptions.RemoveEmptyEntries);
+            string[] wordAndAnswer = word.Trim().Split('-', StringSplitOptions.RemoveEmptyEntries);
+            uniqueWords.Add(wordAndAnswer[0]);
+
             if (wordAndAnswer.Length < 2)
             {
                 return false;
             }
             // can add logic for further evaluation of the input using the created array
+        }
+        // if there are repeating words
+        if (wordsInput.Length > uniqueWords.Count)
+        {
+            return false;
         }
         return true;
     }

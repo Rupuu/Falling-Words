@@ -10,7 +10,8 @@ public class WordTimer : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time >= nextWordTime){
+        if (Time.time >= nextWordTime)
+        {
             wordManager.AddWord();
             nextWordTime = Time.time + wordDelay;
             // wordDelay *= 0.99f; //makes the words fall faster by time

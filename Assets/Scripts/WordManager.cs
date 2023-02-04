@@ -21,6 +21,7 @@ public class WordManager : MonoBehaviour
     public void AddWord()
     {
         var wordData = WordGenerator.GetRandomWordData();
+
         if (wordData.Key == "!#@#$")
         {
             if (wordScorer.OverallCountOfWords() == WordGenerator.allWordsCount)

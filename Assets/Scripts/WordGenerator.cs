@@ -21,7 +21,7 @@ public class WordGenerator : MonoBehaviour
         {
             string[] wordData = data.Split('-');
 
-            wordDict.Add(wordData[0],wordData[1].Split(','));
+            wordDict.Add(wordData[0], wordData[1].Split(','));
         }
         allWordsCount = wordDict.Count;
     }

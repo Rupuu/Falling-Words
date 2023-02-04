@@ -13,7 +13,7 @@ public class WordBoarder : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collidedWord)
     {
         Word matchedWord = wordManager.words.Find(x => x.word == collidedWord.gameObject.name);
-        
+
         wordScorer.untypedWords.Add(matchedWord);
         wordManager.words.Remove(matchedWord);
 

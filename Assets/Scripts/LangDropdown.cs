@@ -15,6 +15,5 @@ public class LangDropdown : MonoBehaviour
 
     public void ChangeLang(){
         WordGenerator.chosenLang = langDropdown.options[langDropdown.value].text;
-        Debug.Log(WordGenerator.chosenLang);
     }
 }

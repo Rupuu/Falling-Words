@@ -1000,8 +1000,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000006198883, y: 0.00001892206}
-  m_SizeDelta: {x: -6.5635, y: 40}
+  m_AnchoredPosition: {x: 6.5634828, y: 0.00001892206}
+  m_SizeDelta: {x: -6.5635, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &439418175
 MonoBehaviour:
@@ -1033,7 +1033,7 @@ MonoBehaviour:
     m_Left: 10
     m_Right: 10
     m_Top: 40
-    m_Bottom: 0
+    m_Bottom: 10
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -1486,8 +1486,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1852667424}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1852667426}
+        m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -1711,8 +1711,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1852667424}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1852667426}
+        m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
         m_MethodName: Finish
         m_Mode: 1
         m_Arguments:
@@ -3873,8 +3873,8 @@ GameObject:
   - component: {fileID: 1852667422}
   - component: {fileID: 1852667421}
   - component: {fileID: 1852667420}
-  - component: {fileID: 1852667424}
   - component: {fileID: 1852667425}
+  - component: {fileID: 1852667426}
   m_Layer: 5
   m_Name: PopupCanvas
   m_TagString: Untagged
@@ -3965,20 +3965,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1852667424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852667419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d0c4231c20fac4f8b48f7f976c87a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1890686728}
-  controller: {fileID: 1852667425}
 --- !u!114 &1852667425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3995,6 +3981,20 @@ MonoBehaviour:
   untypedWords: {fileID: 1375413349}
   correctWords: {fileID: 2015181238}
   wordScorer: {fileID: 1086907738}
+--- !u!114 &1852667426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852667419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d2f1338720e3f4a9a5d47eb2dca4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 1890686728}
+  controller: {fileID: 1852667425}
 --- !u!1 &1890686728
 GameObject:
   m_ObjectHideFlags: 0
@@ -4159,9 +4159,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1852667425}
-        m_TargetAssemblyTypeName: FinishController, Assembly-CSharp
-        m_MethodName: ReturnToMenu
+      - m_Target: {fileID: 1852667426}
+        m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
+        m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4282,8 +4282,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000008733118}
-  m_SizeDelta: {x: -6.5635, y: 40}
+  m_AnchoredPosition: {x: 6.5634766, y: -0.000008733118}
+  m_SizeDelta: {x: -6.5635, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1958434401
 MonoBehaviour:
@@ -4315,7 +4315,7 @@ MonoBehaviour:
     m_Left: 10
     m_Right: 10
     m_Top: 40
-    m_Bottom: 0
+    m_Bottom: 10
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -4544,8 +4544,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1852667424}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1852667426}
+        m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
         m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
@@ -4875,7 +4875,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.9999999}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
