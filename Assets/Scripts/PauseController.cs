@@ -43,7 +43,7 @@ public class PauseController : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        WordGenerator.wordDict.Clear();
+        WordGenerator.baseWordsDict.Clear();
         Time.timeScale = 1f;
         gameIsPaused = false;
     }

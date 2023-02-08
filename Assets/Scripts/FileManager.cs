@@ -32,7 +32,8 @@ public class FileManager : MonoBehaviour
         }
     }
     public static void DeleteLangDropdownOption(TMP_Dropdown dropdown)
-    {
+    { 
+        //delete the option folder with the words
         string filePath = Path.Combine(wordsDataFilePath, PlayerPrefs.GetString("chosenLang"));
 
         if (!Directory.Exists(filePath))
@@ -40,5 +41,27 @@ public class FileManager : MonoBehaviour
             return;
         }
         Directory.Delete(filePath, true);
+
+        // delete meta files of folder if there are any
+        filePath = Path.Combine(wordsDataFilePath, $"{PlayerPrefs.GetString("chosenLang")}.meta");
+
+        if(!File.Exists(filePath))
+        {
+            return;
+        }
+        File.Delete(filePath);
+    }
+    public static void SetDatabase()
+    {
+        string filePath = Application.streamingAssetsPath + "/WordsData/" + $"/{PlayerPrefs.GetString("chosenLang")}/" + "/words.txt";
+        List<string> fileData = File.ReadAllLines(filePath).ToList();
+
+        foreach (var data in fileData)
+        {
+            string[] wordData = data.Split('-');
+
+            WordGenerator.baseWordsDict.Add(wordData[0], wordData[1].Split(','));
+        }
+        WordGenerator.allWordsCount= WordGenerator.baseWordsDict.Count;
     }
 }

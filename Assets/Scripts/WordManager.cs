@@ -15,7 +15,7 @@ public class WordManager : MonoBehaviour
     {
         currentInputWord = new StringBuilder();
 
-        WordGenerator.SetDatabase();
+        FileManager.SetDatabase();
     }
 
     public void AddWord()
