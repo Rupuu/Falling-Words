@@ -1,124 +1,45 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
+    public Slider volumeSlider;
+    public Slider spawnDelaySlider;
+    public Slider fallSpeedSlider;
     public AudioMixer audioMixer;
     public TMP_Dropdown langDropdown;
-    public TMP_InputField directoryInputField;
-    public TMP_InputField wordsInputField;
-    public TextMeshProUGUI resultBox;
     public TextMeshProUGUI spawnDelayCounter;
     public TextMeshProUGUI fallSpeedCounter;
-    public static float fallSpeed = 0.7f; //default value
-    public static float spawnDelay = 2.0f; //default value
-    private string filePath;
-    private string[] wordsInputData;
-    private string directoryName;
     void Start()
     {
-        // setup listener for changed language
-        langDropdown.onValueChanged.AddListener(delegate
-        {
-            ChangeLang();
-        });
+        volumeSlider.value = PlayerPrefs.GetFloat("mixerVolume");
+
+        fallSpeedSlider.value = PlayerPrefs.GetFloat("fallSpeed");
+        fallSpeedCounter.text = PlayerPrefs.GetFloat("fallSpeed").ToString("F2");
+
+        spawnDelaySlider.value = PlayerPrefs.GetFloat("spawnDelay");
+        spawnDelayCounter.text = PlayerPrefs.GetFloat("spawnDelay").ToString("F2");
     }
-    public void ChangeLang()
+    void Update()
     {
-        WordGenerator.chosenLang = langDropdown.options[langDropdown.value].text;
+        fallSpeedCounter.text = PlayerPrefs.GetFloat("fallSpeed").ToString("F2");
+        spawnDelayCounter.text = PlayerPrefs.GetFloat("spawnDelay").ToString("F2");
+        audioMixer.SetFloat("mixerVolume", PlayerPrefs.GetFloat("mixerVolume"));
     }
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        PlayerPrefs.SetFloat("mixerVolume", volume);
     }
     public void SetFallingSpeed(float speed)
     {
-        fallSpeed = speed;
-        fallSpeedCounter.text = speed.ToString("F2");
+        PlayerPrefs.SetFloat("fallSpeed", speed);
     }
     public void SetSpawnDelay(float delay)
     {
-        spawnDelay = delay;
-        spawnDelayCounter.text = delay.ToString("F2");
-    }
-    public void GetWordsInput(string input)
-    {
-        wordsInputData = input.Split("\n", StringSplitOptions.RemoveEmptyEntries);
-    }
-    public void GetDirectoryName(string input)
-    {
-        directoryName = input;
-        filePath = Application.streamingAssetsPath + "/WordsData/" + $"/{directoryName}";
-    }
-    public void CreateNewWordsData()
-    {
-        if (wordsInputData.Length == 0 || string.IsNullOrEmpty(directoryName))
-        {
-            resultBox.color = Color.red;
-            resultBox.text = "There are empty fields!";
-            return;
-        }
-        if (Directory.Exists(filePath))
-        {
-            resultBox.color = Color.red;
-            resultBox.text = "Word list with this name exists!";
-            return;
-        }
-        if (!EvaluateWordInput(wordsInputData))
-        {
-            resultBox.color = Color.red;
-            resultBox.text = "Inputted words have invalid syntax" + '\n' +
-            "Make sure words are not repeating, and there is atleast one translation.";
-            return;
-        }
-        Directory.CreateDirectory(filePath);
-
-        using (StreamWriter outputFile = new StreamWriter(Path.Combine(filePath, "words.txt")))
-        {
-            foreach (string wordInput in wordsInputData)
-            {
-                outputFile.WriteLine(wordInput);
-            }
-            outputFile.Close();
-        }
-        langDropdown.options.Add(new TMP_Dropdown.OptionData(directoryName));
-
-        resultBox.color = Color.green;
-        resultBox.text = "Word list Added!";
-    }
-    private bool EvaluateWordInput(string[] wordsInput)
-    {
-        HashSet<string> uniqueWords = new HashSet<string>();
-
-        foreach (var word in wordsInput)
-        {
-            string[] wordAndAnswer = word.Trim().Split('-', StringSplitOptions.RemoveEmptyEntries);
-            uniqueWords.Add(wordAndAnswer[0]);
-
-            if (wordAndAnswer.Length < 2)
-            {
-                return false;
-            }
-            // can add logic for further evaluation of the input using the created array
-        }
-        // if there are repeating words
-        if (wordsInput.Length > uniqueWords.Count)
-        {
-            return false;
-        }
-        return true;
-    }
-    public void ClearFields()
-    {
-        directoryInputField.text = string.Empty;
-        wordsInputField.text = string.Empty;
-        resultBox.text = string.Empty;
-        directoryName = string.Empty;
-        wordsInputData = new string[0];
+        PlayerPrefs.SetFloat("spawnDelay", delay);
     }
 }

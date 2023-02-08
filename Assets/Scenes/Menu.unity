@@ -1120,6 +1120,63 @@ RectTransform:
   m_AnchoredPosition: {x: -0, y: -31.319}
   m_SizeDelta: {x: 64.97, y: 25.52}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &176469143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 176469144}
+  - component: {fileID: 176469145}
+  - component: {fileID: 176469146}
+  m_Layer: 0
+  m_Name: Setup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &176469144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176469143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 439275738}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &176469145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176469143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbe0b6ff60068d488e1753ec649f495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &176469146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176469143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65b42023b320ff4fbe23e20096046a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &181389594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,15 +1528,7 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: English-A1
-      m_Image: {fileID: 0}
-    - m_Text: English-B1
-      m_Image: {fileID: 0}
-    - m_Text: English-C1
-      m_Image: {fileID: 0}
-    - m_Text: CustomLevel
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1624,8 +1673,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1643995252}
-        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
+      - m_Target: {fileID: 286429911}
+        m_TargetAssemblyTypeName: PersonalWordsMenu, Assembly-CSharp
         m_MethodName: GetWordsInput
         m_Mode: 0
         m_Arguments:
@@ -1757,8 +1806,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 286429910}
+  - component: {fileID: 286429911}
   m_Layer: 0
-  m_Name: AddWordsMenu
+  m_Name: PersonalWordsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1791,6 +1841,21 @@ RectTransform:
   m_AnchoredPosition: {x: -1.07, y: -52.912}
   m_SizeDelta: {x: 5.77, y: 7.4342}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &286429911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286429909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6909234b71ec37c4785a1e507cf24a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directoryInputField: {fileID: 1581344606}
+  wordsInputField: {fileID: 267237564}
+  resultBox: {fileID: 1092932159}
 --- !u!1 &306318502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,9 +2016,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1643995252}
-        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: CreateNewWordsData
+      - m_Target: {fileID: 286429911}
+        m_TargetAssemblyTypeName: PersonalWordsMenu, Assembly-CSharp
+        m_MethodName: SubmitData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1588877363}
+        m_TargetAssemblyTypeName: LangDropdown, Assembly-CSharp
+        m_MethodName: LoadLangDropdown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2442,7 +2519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: English-A1
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -2856,6 +2933,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1511898116}
+  - {fileID: 176469144}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5800,8 +5878,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1643995252}
-        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
+      - m_Target: {fileID: 286429911}
+        m_TargetAssemblyTypeName: PersonalWordsMenu, Assembly-CSharp
         m_MethodName: GetDirectoryName
         m_Mode: 0
         m_Arguments:
@@ -5895,6 +5973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1588877362}
+  - component: {fileID: 1588877363}
   m_Layer: 5
   m_Name: LangDropdown
   m_TagString: Untagged
@@ -5925,6 +6004,20 @@ RectTransform:
   m_AnchoredPosition: {x: -0.16146517, y: 0.60845184}
   m_SizeDelta: {x: 280.7549, y: 184.3839}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1588877363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588877361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ae5ba13d13f4a4dacecdb875d6ca65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 0
+  langDropdown: {fileID: 246547211}
 --- !u!1 &1600459959
 GameObject:
   m_ObjectHideFlags: 0
@@ -6086,8 +6179,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1643995252}
-        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
+      - m_Target: {fileID: 286429911}
+        m_TargetAssemblyTypeName: PersonalWordsMenu, Assembly-CSharp
         m_MethodName: ClearFields
         m_Mode: 1
         m_Arguments:
@@ -6373,11 +6466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af89d3798f7e07f4bb2547d6313fc57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 1967974311}
+  spawnDelaySlider: {fileID: 1760929869}
+  fallSpeedSlider: {fileID: 420943393}
   audioMixer: {fileID: 24100000, guid: 7cdd6d22b5bce384da0fc4e7786d5ff9, type: 2}
   langDropdown: {fileID: 246547211}
-  directoryInputField: {fileID: 1581344606}
-  wordsInputField: {fileID: 267237564}
-  resultBox: {fileID: 1092932159}
   spawnDelayCounter: {fileID: 1709363475}
   fallSpeedCounter: {fileID: 164445822}
 --- !u!1 &1649261030

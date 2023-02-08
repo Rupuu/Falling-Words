@@ -5,9 +5,12 @@ using UnityEngine;
 public class WordTimer : MonoBehaviour
 {
     public WordManager wordManager;
-    private float wordDelay = OptionsMenu.spawnDelay;
+    private float wordDelay;
     private float nextWordTime = 0f;
 
+    private void Start() {
+        wordDelay = PlayerPrefs.GetFloat("spawnDelay");       
+    }
     private void Update()
     {
         if (Time.time >= nextWordTime)

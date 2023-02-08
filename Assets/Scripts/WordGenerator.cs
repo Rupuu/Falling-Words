@@ -8,13 +8,11 @@ using UnityEngine;
 public class WordGenerator : MonoBehaviour
 {
     public static Dictionary<string, string[]> wordDict = new Dictionary<string, string[]>();
-    public static string chosenLang = "English-A1";
     private static string filePath;
     public static int allWordsCount;
-
     public static void SetDatabase()
     {
-        filePath = Application.streamingAssetsPath + "/WordsData/" + $"/{chosenLang}/" + "/words.txt";
+        filePath = Application.streamingAssetsPath + "/WordsData/" + $"/{PlayerPrefs.GetString("chosenLang")}/" + "/words.txt";
         List<string> fileData = File.ReadAllLines(filePath).ToList();
 
         foreach (var data in fileData)

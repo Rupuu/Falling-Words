@@ -13,7 +13,7 @@ public class WordDisplay : MonoBehaviour
     {
         text.text = word;
         gameObject.name = word;
-        fallSpeed = OptionsMenu.fallSpeed;
+        fallSpeed = PlayerPrefs.GetFloat("fallSpeed");
     }
 
     //stop the movement & destroys the text component that the word is related to
