@@ -7,6 +7,7 @@ using System.Linq;
 
 public class FileManager : MonoBehaviour
 {
+    static string wordsDataFilePath = Application.streamingAssetsPath + "/WordsData/";
     public static void CreateWordData(string filePath, string[] wordData)
     {
         Directory.CreateDirectory(filePath);
@@ -20,22 +21,24 @@ public class FileManager : MonoBehaviour
             outputFile.Close();
         }
     }
-    public static void FillLangDropdown(TMP_Dropdown dropdown)
+    public static void RefillLangDropdown(TMP_Dropdown dropdown)
     {
-        string filepath = Application.streamingAssetsPath + "/WordsData/";
+        string[] folderNames = Directory.GetDirectories(wordsDataFilePath).Select(Path.GetFileName).ToArray();
 
-        string[] folderNames = Directory.GetDirectories(filepath).Select(Path.GetFileName).ToArray();
-
+        dropdown.options.Clear();
         foreach (var name in folderNames)
         {
-            if(dropdown.options.FindIndex(x=>x.text == name) != -1){
-                continue;
-            }
             dropdown.options.Add(new TMP_Dropdown.OptionData(name));
         }
-        dropdown.RefreshShownValue();
+    }
+    public static void DeleteLangDropdownOption(TMP_Dropdown dropdown)
+    {
+        string filePath = Path.Combine(wordsDataFilePath, PlayerPrefs.GetString("chosenLang"));
 
-        dropdown.value = dropdown.options
-            .FindIndex(x => x.text == PlayerPrefs.GetString("chosenLang"));
+        if (!Directory.Exists(filePath))
+        {
+            return;
+        }
+        Directory.Delete(filePath, true);
     }
 }
