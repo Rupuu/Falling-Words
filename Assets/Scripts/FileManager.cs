@@ -21,7 +21,7 @@ public class FileManager : MonoBehaviour
             outputFile.Close();
         }
     }
-    public static void RefillLangDropdown(TMP_Dropdown dropdown)
+    public static void FillLangDropdown(TMP_Dropdown dropdown)
     {
         string[] folderNames = Directory.GetDirectories(wordsDataFilePath).Select(Path.GetFileName).ToArray();
 

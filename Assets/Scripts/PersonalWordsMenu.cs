@@ -11,7 +11,7 @@ public class PersonalWordsMenu : MonoBehaviour
     public TMP_InputField wordsInputField;
     public TextMeshProUGUI resultBox;
     private string filePath;
-    private string[] wordsInputData;
+    private string[] wordsInputData = new string[0];
     private string directoryName;
     public void GetWordsInput(string input)
     {
@@ -43,10 +43,12 @@ public class PersonalWordsMenu : MonoBehaviour
             "Make sure words are not repeating, and there is atleast one translation.";
             return;
         }
-        FileManager.CreateWordData(filePath,wordsInputData);
+        FileManager.CreateWordData(filePath, wordsInputData);
 
         resultBox.color = Color.green;
         resultBox.text = "Word list Added!";
+
+        Invoke(nameof(ClearResultText),2.5f);
     }
     private bool EvaluateWordInput(string[] wordsInput)
     {
@@ -63,7 +65,7 @@ public class PersonalWordsMenu : MonoBehaviour
             }
             // can add logic for further evaluation of the input using the created array
         }
-        
+
         // if there are repeating words
         if (wordsInput.Length > uniqueWords.Count)
         {
@@ -78,5 +80,10 @@ public class PersonalWordsMenu : MonoBehaviour
         resultBox.text = string.Empty;
         directoryName = string.Empty;
         wordsInputData = new string[0];
+    }
+
+    public void ClearResultText()
+    {
+        resultBox.text = string.Empty;
     }
 }
