@@ -7,7 +7,7 @@ public class WordInput : MonoBehaviour
     public WordManager wordManager;
     void Update()
     {
-        if (PauseController.gameIsPaused)
+        if (PauseController.GameIsPaused)
         {
             return;
         }

@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class PauseController : MonoBehaviour
 {
-    public static bool gameIsPaused = false;
+    public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public FinishController controller;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (gameIsPaused)
+            if (GameIsPaused)
             {
                 Resume();
             }
@@ -27,7 +27,7 @@ public class PauseController : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        gameIsPaused = false;
+        GameIsPaused = false;
     }
     public void Finish()
     {
@@ -38,13 +38,21 @@ public class PauseController : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        gameIsPaused = true;
+        GameIsPaused = true;
     }
     public void LoadMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        WordGenerator.baseWordsDict.Clear();
+        WordGenerator.BaseWordsDict.Clear();
         Time.timeScale = 1f;
-        gameIsPaused = false;
+        GameIsPaused = false;
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        WordGenerator.BaseWordsDict.Clear();
+        Time.timeScale = 1f;
+        GameIsPaused = false;
     }
 }

@@ -60,8 +60,8 @@ public class FileManager : MonoBehaviour
         {
             string[] wordData = data.Split('-');
 
-            WordGenerator.baseWordsDict.Add(wordData[0], wordData[1].Split(','));
+            WordGenerator.BaseWordsDict.Add(wordData[0], wordData[1].Split(','));
         }
-        WordGenerator.allWordsCount= WordGenerator.baseWordsDict.Count;
+        WordGenerator.AllWordsCount= WordGenerator.BaseWordsDict.Count;
     }
 }

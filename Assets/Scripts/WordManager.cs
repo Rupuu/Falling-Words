@@ -24,7 +24,7 @@ public class WordManager : MonoBehaviour
 
         if (wordData.Key == "!#@#$")
         {
-            if (wordScorer.OverallCountOfWords() == WordGenerator.allWordsCount)
+            if (wordScorer.OverallCountOfWords() == WordGenerator.AllWordsCount)
             {
                 controller.FinishGame();
             }
@@ -38,6 +38,7 @@ public class WordManager : MonoBehaviour
     public void InputLetter(char input)
     {
         //on backspace
+        AudioManager.Instance.PlayBackspacePress();
         if (input == '\b')
         {
             if (currentInputWord.Length > 0)
@@ -57,6 +58,8 @@ public class WordManager : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.PlayKeyPress();
+
             currentInputWord.Append(input);
             inputDisplay.SetInputText(currentInputWord.ToString());
         }
@@ -69,6 +72,8 @@ public class WordManager : MonoBehaviour
             {
                 if (currentInputWord.ToString() == answer)
                 {
+                    AudioManager.Instance.PlayCorrectAnswer();
+                    
                     word.display.RemoveWord();
                     wordScorer.correctWords.Add(word);
                     words.Remove(word);

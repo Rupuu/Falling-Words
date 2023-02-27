@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
@@ -10,7 +9,6 @@ public class OptionsMenu : MonoBehaviour
     public Slider volumeSlider;
     public Slider spawnDelaySlider;
     public Slider fallSpeedSlider;
-    public AudioMixer audioMixer;
     public TMP_Dropdown langDropdown;
     public TextMeshProUGUI spawnDelayCounter;
     public TextMeshProUGUI fallSpeedCounter;
@@ -28,7 +26,6 @@ public class OptionsMenu : MonoBehaviour
     {
         fallSpeedCounter.text = PlayerPrefs.GetFloat("fallSpeed").ToString("F2");
         spawnDelayCounter.text = PlayerPrefs.GetFloat("spawnDelay").ToString("F2");
-        audioMixer.SetFloat("mixerVolume", PlayerPrefs.GetFloat("mixerVolume"));
     }
     public void SetVolume(float volume)
     {
