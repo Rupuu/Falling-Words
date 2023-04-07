@@ -36,6 +36,12 @@ public class PersonalWordsMenu : MonoBehaviour
             resultBox.text = "Word list with this name exists!";
             return;
         }
+        if(directoryName.Contains('.') || directoryName.Contains('/') || directoryName.Contains('\\'))
+        {
+            resultBox.color = Color.red;
+            resultBox.text = "Directory name cannot contain symbols!";
+            return;
+        }
         if (!EvaluateWordInput(wordsInputData))
         {
             resultBox.color = Color.red;

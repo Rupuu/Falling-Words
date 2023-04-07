@@ -12,8 +12,8 @@ lemon-лимон
 mouse-мишка
 nose-нос
 orange-портокал
-pen-химикал
-pencil-молив
+pen-молив
+pencil-химикал
 queen-кралица
 rabbit-заек
 sun-слънце

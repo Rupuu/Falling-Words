@@ -47,6 +47,7 @@ public class LangDropdownController : MonoBehaviour
 
         langDropdown.value = 0;
         PlayerPrefs.SetString("chosenLang", langDropdown.options[0].text);
+        ChangeDeleteBtnState();
     }
 
     // disables the delete button if the current chosen language matches one of the defaults
