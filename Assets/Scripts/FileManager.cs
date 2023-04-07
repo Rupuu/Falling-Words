@@ -62,6 +62,6 @@ public class FileManager : MonoBehaviour
 
             WordGenerator.BaseWordsDict.Add(wordData[0], wordData[1].Split(','));
         }
-        WordGenerator.AllWordsCount= WordGenerator.BaseWordsDict.Count;
+        WordGenerator.AllWordsCount = WordGenerator.BaseWordsDict.Count;
     }
 }

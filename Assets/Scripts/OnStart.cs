@@ -12,7 +12,7 @@ public class OnStart : MonoBehaviour
             PlayerPrefs.SetFloat("mixerVolume", 0);
             PlayerPrefs.SetFloat("spawnDelay", 2.0f);
             PlayerPrefs.SetFloat("fallSpeed", 0.7f);
-            PlayerPrefs.SetString("chosenLang", "CustomLevel");
+            PlayerPrefs.SetString("chosenLang", "English-A1");
         }
     }
 }

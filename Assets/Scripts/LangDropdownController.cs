@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LangDropdownController : MonoBehaviour
 {
-    private List<string> defaultLangOptions = new List<string> { "English-A1", "CustomLevel" };
+    private List<string> defaultLangOptions = new List<string> { "English-A1", "English-B1","English-C1", "English-Random" };
     public TMP_Dropdown langDropdown;
     public Button deleteBtn;
     public TextMeshProUGUI deleteBtnTxt;

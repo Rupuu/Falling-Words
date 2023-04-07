@@ -9,7 +9,6 @@ public class OptionsMenu : MonoBehaviour
     public Slider volumeSlider;
     public Slider spawnDelaySlider;
     public Slider fallSpeedSlider;
-    public TMP_Dropdown langDropdown;
     public TextMeshProUGUI spawnDelayCounter;
     public TextMeshProUGUI fallSpeedCounter;
     void Start()
