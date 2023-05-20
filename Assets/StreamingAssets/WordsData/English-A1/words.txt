@@ -45,5 +45,4 @@ turtle-костенурка
 unicorn-еднорог
 van-ван
 window-прозорец
-yellow-жълт
 zipper-цип
